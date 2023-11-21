@@ -21,5 +21,28 @@ FROM employees
 NATURAL JOIN dept_emp
 NATURAL JOIN departments
 
+--First name, last name, sex for Hercules and last name B
+-- Source for LEFT: https://www.w3schools.com/sql/func_sqlserver_left.asp
+SELECT first_name, last_name, sex
+FROM employees 
+WHERE first_name = 'Hercules' AND LEFT(last_name,1) = 'B'
+
+--Sales department employee number, last name, first, name, dept name
+SELECT emp_no, last_name, first_name, dept_name
+FROM employees
+	NATURAL JOIN dept_emp
+		NATURAL JOIN departments
+		WHERE dept_name = 'Sales'
+		
+--Frequency counts, desc order, employee last name 
+SELECT last_name, COUNT(last_name) AS count
+FROM employees
+GROUP BY last_name
+ORDER BY count DESC
+	
+	
+
+
+
 
 
